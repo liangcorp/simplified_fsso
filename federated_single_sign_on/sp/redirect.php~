@@ -1,0 +1,8 @@
+<html>
+<title>Re-directing...</title>
+<body>
+<?php session_start();
+
+?>
+</body>
+</html>

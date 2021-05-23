@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<users>
+	<user>
+		<username>dagny</username>
+		<password>123</password>
+		<role>admin</role>
+		<authenticated>true</authenticated>
+		<domain>foreign.virtual.vm</domain>
+	</user>
+	<user>
+		<username>john</username>
+		<password>123</password>
+		<role>admin</role>
+		<authenticated>true</authenticated>
+		<domain>foreign.virtual.vm</domain>
+	</user>
+	<user>
+		<username>henry</username>
+		<password>123</password>
+		<role>admin</role>
+		<authenticated>true</authenticated>
+		<domain>foreign.virtual.vm</domain>
+	</user>
+</users>

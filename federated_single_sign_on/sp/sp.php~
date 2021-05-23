@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>Service Provider Simulation (foreign.virtual.vm)</title>
+</head>
+<body>
+	<img src="dit_crest_2010.gif"/><img src="dit_logo_2010.gif"/><br><br>
+	<center>
+		Service Provider Simulation (foreign.virtual.vm)<br><br>
+
+		<?php session_start();
+		try
+		{
+			$_SESSION["sp_url"] = "http://localhost/sp/sp.php";
+			$_SESSION["sp_domain"] = "foreign.virtual.vm";
+			$sp_domain = $_SESSION["sp_domain"];
+			
+			/*
+			echo "<br>***************<br><pre>";
+			$_SESSION["TEMP"] = $_POST;
+			$temp = $_SESSION["TEMP"];
+			
+			foreach ($temp as $value) 
+			{
+				echo $value;
+			}
+			echo $_SESSION["TEMP"];
+			echo "</pre><br>***************<br>";
+			*/
+			
+			if($_SESSION["authenticated"])
+			{
+				$username = $_SESSION["username"];
+				$role = $_SESSION["role"];
+				$domain = $_SESSION["idp_domain"];
+
+				$doc = new DOMDocument();
+				$doc->load( 'user_policy.xml' );
+
+				$policies = $doc->getElementsByTagName( "policy" );
+				foreach( $policies as $policy )
+				{
+					$students = $policy->getElementsByTagName( "student" );
+					$student = $students->item(0)->nodeValue;
+
+					$lectures = $policy->getElementsByTagName( "lecture" );
+					$lecture = $lectures->item(0)->nodeValue;
+				}
+				
+				if ($role == "student")
+				{
+					$permission = $student;
+				}
+				else if ($role == "lecture")
+				{
+					$permission = $lecture;
+				}
+				
+				echo "<font color=\"red\"> User \"$username\" has been 
+				authenticated by the identity provider simulation in domain $domain<br><br>
+				\"$username\" is a $role in $domain, therefore, \"$username\" 
+				is granted $permission permission in domain $sp_domain</font><br><br><br>";
+				
+				echo "<b>Detail information:</b>
+				<table>
+				<tr><td>Username:</td><td>$username"."@"."$domain</td></tr>
+				<tr><td>Role:</td><td>$permission<td></tr>
+				</table>
+				<br><br><br>";
+			}
+			else
+			{
+				echo "<font color=\"red\">No assertion has been received from
+				 identity provider simulation</font><br><br><br>";
+			}
+		}
+		catch(Exception $e)
+		{
+			$message = $e->getMessage();
+			echo $message;
+		}
+		?>
+
+		Select your identity providers from the list:<br><br>
+		
+		<form name="gotoidp" method="POST" action="http://localhost/idp/idp.php">
+		
+		<select name="idp_list" size="1" onChange="gotosite()">
+			<option value="http://localhost/idp/idp.php">home.virtual.vm</option>
+			<input type="submit" name="submit_button" value="Go"/>
+		</select>
+		</form>
+	</center>
+	<br><br>
+	<a href="../index.php">Back to Index</a><br><br>
+</body>
+</html>

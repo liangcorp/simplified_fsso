@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<services>
+	<service>
+		<serviceName>ssh</serviceName>
+		<domain>home.virtual.vm</domain>
+		<ipAddress>127.0.0.1</ipAddress>
+	</service>
+	<service>
+		<serviceName>saml-aai-kerberos</serviceName>
+		<domain>home.virtual.vm</domain>
+		<ipAddress>127.0.0.1</ipAddress>
+	</service>
+	<service>
+		<serviceName>idp</serviceName>
+		<domain>home.virtual.vm</domain>
+		<ipAddress>127.0.0.1</ipAddress>
+	</service>
+</services>

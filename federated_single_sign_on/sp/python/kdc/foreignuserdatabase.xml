@@ -1,0 +1,26 @@
+<users>
+	<user>
+		<username>user1</username>
+		<password>321</password>
+		<permission>guest</permission>
+		<domain>foreign.virtual.vm</domain>
+	</user>
+	<user>
+		<username>user2</username>
+		<password>321</password>
+		<permission>power</permission>
+		<domain>foreign.virtual.vm</domain>
+	</user>
+	<user>
+		<username>fred</username>
+		<password>321</password>
+		<permission>power</permission>
+		<domain>home.virtual.vm</domain>
+	</user>
+	<user>
+		<username>chen</username>
+		<password>321</password>
+		<permission>guest</permission>
+		<domain>home.virtual.vm</domain>
+	</user>
+</users>

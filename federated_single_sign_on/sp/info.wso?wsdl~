@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://footballpool.dataaccess.eu" name="Info" targetNamespace="http://footballpool.dataaccess.eu">
+  <types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://footballpool.dataaccess.eu">
+      <xs:complexType name="tPlayerNames">
+        <xs:sequence>
+          <xs:element name="iId" type="xs:int"/>
+          <xs:element name="sName" type="xs:string"/>
+          <xs:element name="sCountryName" type="xs:string"/>
+          <xs:element name="sCountryFlag" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="AllPlayerNamesSoapRequest">
+    <part name="parameters" element="tns:AllPlayerNames"/>
+  </message>
+
+  <portType name="InfoSoapType">
+    <operation name="AllPlayerNames">
+      <documentation>Returns an array with the id, name, country and flag reference of all players</documentation>
+      <input message="tns:AllPlayerNamesSoapRequest"/>
+      <output message="tns:AllPlayerNamesSoapResponse"/>
+    </operation>
+
+  <binding name="InfoSoapBinding" type="tns:InfoSoapType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="AllPlayerNames">
+      <soap:operation soapAction="" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="Info">
+    <documentation>This Visual DataFlex Web Service exposes functions for the current football pool</documentation>
+    <port name="InfoSoap" binding="tns:InfoSoapBinding">
+      <soap:address location="http://footballpool.dataaccess.eu/data/info.wso"/>
+    </port>
+  </service>
+</definitions>
